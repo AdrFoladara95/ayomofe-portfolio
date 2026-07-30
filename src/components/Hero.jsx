@@ -2,8 +2,11 @@ import React from "react";
 import { FaInstagram, FaLinkedin, FaTiktok } from "react-icons/fa";
 import profile from '../assets/profile.jpeg'
 import { motion } from "framer-motion";
+import { useState } from "react";
+import { div } from "framer-motion/client";
 
 export default function Hero() {
+  const [showImage, setShowImage] = useState(false)
   return (
     <section
       id="home"
@@ -80,12 +83,26 @@ export default function Hero() {
             <img
               src={profile}
               alt="Designer"
+              onClick={() => setShowImage(true)}
               className="w-full h-full rounded-full"
             />
           </div>
         </motion.div>
 
       </div>
+      {showImage && (
+        <div
+        className="fixed inset-0 bg-black/90 flex items-center justify-center z-50"
+        onClick={()=> setShowImage(false)}
+        >
+          <img src={profile} 
+          alt="Designer" 
+          className="max-w-[90%] max-h-[90%] rounded-xl"
+          onClick={(e)=> e.stopPropagation()}
+          />
+
+        </div>
+      )}
     </section>
   );
 }

@@ -124,6 +124,7 @@ export default function Portfolio() {
                   src={project.images[0]}
                   alt={project.title}
                   whileHover={{scale: 1.1}}
+                  onClick={() => setSelectedProject(project)}
                   className="
                     w-full
                     h-64
